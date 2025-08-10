@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../routes/app_routes.dart';
 import 'login_page.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -13,8 +14,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController =
-      TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
 
   bool agreeTerms = false;
 
@@ -34,8 +34,7 @@ class _SignUpPageState extends State<SignUpPage> {
               color: Colors.green,
               child: Center(
                 child: Image.asset(
-                  // 'assets/images/logo.png',
-                  "assets/WhatsApp Image 2025-08-08 at 2.47.53 PM.jpeg",
+                  'assets/WhatsApp Image 2025-08-08 at 2.47.53 PM.jpeg',
                   height: 100,
                 ),
               ),
@@ -64,8 +63,11 @@ class _SignUpPageState extends State<SignUpPage> {
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.person),
                       hintText: "Enter Name",
+                      filled: true,
+                      fillColor: Colors.grey[100],
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(25),
+                        borderSide: BorderSide.none,
                       ),
                     ),
                   ),
@@ -78,8 +80,11 @@ class _SignUpPageState extends State<SignUpPage> {
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.phone),
                       hintText: "Enter Phone Number",
+                      filled: true,
+                      fillColor: Colors.grey[100],
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(25),
+                        borderSide: BorderSide.none,
                       ),
                     ),
                   ),
@@ -92,12 +97,11 @@ class _SignUpPageState extends State<SignUpPage> {
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.lock),
                       hintText: "Enter Password",
-                      suffixIcon: IconButton(
-                        icon: const Icon(Icons.visibility_off),
-                        onPressed: () {},
-                      ),
+                      filled: true,
+                      fillColor: Colors.grey[100],
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(25),
+                        borderSide: BorderSide.none,
                       ),
                     ),
                   ),
@@ -110,12 +114,11 @@ class _SignUpPageState extends State<SignUpPage> {
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.lock),
                       hintText: "Confirm Password",
-                      suffixIcon: IconButton(
-                        icon: const Icon(Icons.visibility_off),
-                        onPressed: () {},
-                      ),
+                      filled: true,
+                      fillColor: Colors.grey[100],
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(25),
+                        borderSide: BorderSide.none,
                       ),
                     ),
                   ),
@@ -169,14 +172,14 @@ class _SignUpPageState extends State<SignUpPage> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(25),
                         ),
                       ),
                       onPressed: agreeTerms
                           ? () {
-                              // TODO: Sign up logic here
-                              Get.offAllNamed('/home');
-                            }
+                        // TODO: call signup api and on success:
+                        Get.offAllNamed(AppRoutes.home);
+                      }
                           : null,
                       child: const Text(
                         "Sign Up",
@@ -215,12 +218,12 @@ class _SignUpPageState extends State<SignUpPage> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                      ),
+                      )
                     ],
                   ),
                 ],
               ),
-            ),
+            )
           ],
         ),
       ),

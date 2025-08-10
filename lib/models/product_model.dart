@@ -15,12 +15,16 @@ class Product {
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
-      name: json['name'],
-      description: json['description'],
-      mrp: json['MRP'],
-      unit: json['unit'],
-      images: List<String>.from(json['images']),
+      name: json['name']?.toString() ?? '',
+      description: json['description']?.toString(),
+      mrp: json['MRP']?.toString() ?? '',
+      unit: json['unit']?.toString() ?? '',
+      images: (json['images'] as List<dynamic>?)?.map((e) => e.toString()).toList() ?? [],
     );
   }
-}
 
+  // helper: empty product fallback
+  factory Product.empty() {
+    return Product(name: 'Unknown', description: null, mrp: '0', unit: '', images: []);
+  }
+}

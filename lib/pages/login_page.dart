@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../routes/app_routes.dart';
 import 'signup_page.dart';
 
 class LoginPage extends StatelessWidget {
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  LoginPage({super.key});
+   LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +25,7 @@ class LoginPage extends StatelessWidget {
               color: Colors.green,
               child: Center(
                 child: Image.asset(
-                  // 'assets/images/logo.png',
-                  "assets/WhatsApp Image 2025-08-08 at 2.47.53 PM.jpeg",
+                  'assets/WhatsApp Image 2025-08-08 at 2.47.53 PM.jpeg',
                   height: 100,
                 ),
               ),
@@ -55,8 +55,11 @@ class LoginPage extends StatelessWidget {
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.phone),
                       hintText: "Enter Phone Number",
+                      filled: true,
+                      fillColor: Colors.grey[100],
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(25),
+                        borderSide: BorderSide.none,
                       ),
                     ),
                   ),
@@ -69,12 +72,15 @@ class LoginPage extends StatelessWidget {
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.lock),
                       hintText: "Enter Password",
+                      filled: true,
+                      fillColor: Colors.grey[100],
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25),
+                        borderSide: BorderSide.none,
+                      ),
                       suffixIcon: IconButton(
                         icon: const Icon(Icons.visibility_off),
                         onPressed: () {},
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
                       ),
                     ),
                   ),
@@ -100,12 +106,12 @@ class LoginPage extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(25),
                         ),
                       ),
                       onPressed: () {
-                        // TODO: Add authentication logic here
-                        Get.offAllNamed('/home');
+                        // TODO: replace with real auth - demo routes to home
+                        Get.offAllNamed(AppRoutes.home);
                       },
                       child: const Text(
                         "Log In",
@@ -135,7 +141,7 @@ class LoginPage extends StatelessWidget {
                       const Text("Don’t have an account? "),
                       GestureDetector(
                         onTap: () {
-                          Get.to(() => SignUpPage());
+                          Get.to(() => const SignUpPage());
                         },
                         child: const Text(
                           "Sign up",
@@ -144,12 +150,12 @@ class LoginPage extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                      ),
+                      )
                     ],
                   ),
                 ],
               ),
-            ),
+            )
           ],
         ),
       ),

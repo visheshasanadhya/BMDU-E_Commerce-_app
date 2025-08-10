@@ -1,9 +1,5 @@
 # e_commerce
 
-A new Flutter project.
-
-## Getting Started
-
 This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
@@ -14,3 +10,8 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+https://docs.google.com/spreadsheets/d/1lEn4a2izZgt4og59WgVKo-esv3UL5Vhm237kNpTycIg/edit?gid=0#gid=0
+
+in thish link 
+

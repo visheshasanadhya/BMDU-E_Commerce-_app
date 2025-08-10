@@ -12,14 +12,19 @@ class AppRoutes {
   static const productDetail = '/product-detail';
 
   static final pages = [
-    GetPage(name: login, page: () => LoginPage()),
-    GetPage(name: signup, page: () => SignUpPage()),
+    GetPage(name: login, page: () =>  LoginPage()),
+    GetPage(name: signup, page: () => const SignUpPage()),
     GetPage(name: home, page: () => const HomePage()),
     GetPage(
       name: productDetail,
       page: () {
-        final product = Get.arguments as Product;
-        return ProductDetailPage(product: product);
+        final args = Get.arguments;
+        if (args is Product) {
+          return ProductDetailPage(product: args);
+        } else {
+          // fallback: empty product
+          return ProductDetailPage(product: Product.empty());
+        }
       },
     ),
   ];
