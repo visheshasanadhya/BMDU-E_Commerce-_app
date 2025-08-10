@@ -1,0 +1,48 @@
+name: e_commerce
+description: Turn your frame design into production-ready frontend code for mobile
+  apps and web
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  http: ^1.5.0
+  carousel_slider: ^5.1.1
+  google_fonts: ^4.0.4
+  get: ^4.7.2
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+  flutter_lints: ^5.0.0
+
+
+flutter:
+  uses-material-design: true
+  assets:
+  - assets/images/
+  - assets/
+  fonts:
+  - family: Inter
+    fonts:
+    - asset: assets/fonts/Inter-Regular.ttf
+    - asset: assets/fonts/Inter-Light.ttf
+    - asset: assets/fonts/Inter-Thin.ttf
+    - asset: assets/fonts/Inter-ExtraLight.ttf
+    - asset: assets/fonts/Inter-SemiBold.ttf
+    - asset: assets/fonts/Inter-Medium.ttf
+    - asset: assets/fonts/Inter-Bold.ttf
+    - asset: assets/fonts/Inter-ExtraBold.ttf
+    - asset: assets/fonts/Inter-Black.ttf
+ 
