@@ -1,5 +1,5 @@
 // flutter build apk --release --no-tree-shake-icons
-
+// flutter build web --release --no-tree-shake-icons --base-href "/e_commerce/"
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'routes/app_routes.dart';

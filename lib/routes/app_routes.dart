@@ -13,7 +13,7 @@ class AppRoutes {
 
   static final pages = [
     GetPage(name: login, page: () =>  LoginPage()),
-    GetPage(name: signup, page: () => const SignUpPage()),
+    GetPage(name: signup, page: () =>  SignUpPage()),
     GetPage(name: home, page: () => const HomePage()),
     GetPage(
       name: productDetail,

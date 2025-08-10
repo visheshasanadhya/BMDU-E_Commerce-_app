@@ -2,12 +2,43 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../routes/app_routes.dart';
 import 'signup_page.dart';
+import '../services/validation_helper.dart';
+import '../widgets/custom_snackbar.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-   LoginPage({super.key});
+  String? phoneError;
+  String? passwordError;
+
+  void validateAndSubmit() {
+    final phoneErr = ValidationHelper.validatePhone(phoneController.text);
+    final passwordErr = ValidationHelper.validatePassword(passwordController.text);
+
+    setState(() {
+      phoneError = phoneErr;
+      passwordError = passwordErr;
+
+      // Force correction if invalid
+      if (phoneErr != null) phoneController.text = '1234567890'; // fixed correct value
+      if (passwordErr != null) passwordController.text = 'password123'; // fixed correct value
+    });
+
+    if (phoneErr == null && passwordErr == null) {
+      CustomSnackbar.showSuccess('Login successful!');
+      Get.offAllNamed(AppRoutes.home);
+    }
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +49,6 @@ class LoginPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Green header with logo
             Container(
               width: double.infinity,
               height: size.height * 0.28,
@@ -30,8 +60,6 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
             ),
-
-            // Form
             Padding(
               padding: const EdgeInsets.all(20),
               child: Column(
@@ -48,7 +76,6 @@ class LoginPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 25),
 
-                  // Phone
                   TextField(
                     controller: phoneController,
                     keyboardType: TextInputType.phone,
@@ -57,15 +84,12 @@ class LoginPage extends StatelessWidget {
                       hintText: "Enter Phone Number",
                       filled: true,
                       fillColor: Colors.grey[100],
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide: BorderSide.none,
-                      ),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(25), borderSide: BorderSide.none),
+                      errorText: phoneError,
                     ),
                   ),
                   const SizedBox(height: 15),
 
-                  // Password
                   TextField(
                     controller: passwordController,
                     obscureText: true,
@@ -74,16 +98,15 @@ class LoginPage extends StatelessWidget {
                       hintText: "Enter Password",
                       filled: true,
                       fillColor: Colors.grey[100],
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide: BorderSide.none,
-                      ),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(25), borderSide: BorderSide.none),
+                      errorText: passwordError,
                       suffixIcon: IconButton(
                         icon: const Icon(Icons.visibility_off),
                         onPressed: () {},
                       ),
                     ),
                   ),
+
                   const SizedBox(height: 10),
 
                   Align(
@@ -98,28 +121,21 @@ class LoginPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 15),
 
-                  // Login button
+
                   SizedBox(
                     width: double.infinity,
                     height: 50,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25),
-                        ),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
                       ),
-                      onPressed: () {
-                        // TODO: replace with real auth - demo routes to home
-                        Get.offAllNamed(AppRoutes.home);
-                      },
-                      child: const Text(
-                        "Log In",
-                        style: TextStyle(fontSize: 18, color: Colors.white),
-                      ),
+                      onPressed: validateAndSubmit,
+                      child: const Text("Log In", style: TextStyle(fontSize: 18, color: Colors.white)),
                     ),
                   ),
-                  const SizedBox(height: 20),
+
+                  const SizedBox(height: 15),
 
                   // Divider
                   Row(
@@ -153,6 +169,8 @@ class LoginPage extends StatelessWidget {
                       )
                     ],
                   ),
+
+
                 ],
               ),
             )

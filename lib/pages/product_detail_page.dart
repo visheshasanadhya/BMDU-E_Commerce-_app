@@ -9,15 +9,20 @@ class ProductDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(product.name)),
+      appBar: AppBar(title: Text(product.name, style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold) )),
       body: ListView(
         children: [
           SizedBox(
             height: 300,
+            width: double.infinity,
             child: product.images.isNotEmpty
                 ? CarouselSlider(
               options: CarouselOptions(
                 height: 300,
+                aspectRatio: 16 / 9,
+                viewportFraction: 0.8,
+                initialPage: 0,
+
                 enlargeCenterPage: true,
                 enableInfiniteScroll: false,
                 autoPlay: true,
@@ -56,7 +61,7 @@ class ProductDetailPage extends StatelessWidget {
               const SizedBox(height: 20),
               ElevatedButton.icon(
                 onPressed: () {
-                  // implement cart logic or show snackbar
+
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Added to cart (demo)')));
                 },
                 icon: const Icon(Icons.shopping_cart),
